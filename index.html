@@ -94,6 +94,8 @@ This review examines the principles, mechanisms, and innovations in photocatalyt
    </p>
 </html>
 
+<div id="research">
+
 <h3 id="introduction">introduction</h3>
   <p class = "ex1">
        <pre>
@@ -113,7 +115,7 @@ These species can fully oxidise organic contaminants to non-hazardous carbon dio
 Water pollution due to organic contaminants is a serious issue because of acute toxicities and carcinogenic nature of the pollutants.
 Among various water treatment methods, adsorption is supposed as the best one due to its inexpensiveness, universal nature and ease of operation. 
 Many waste materials used include fruit wastes, coconut shell, scrap tyres, bark and other tannin-rich materials, 
-These adsorbents have been found to remove various organic pollutants ranging from 80 to 99.9%.<a href="https://www.sciencedirect.com/science/article/pii/S0301479712004367">( Ali, I., Asim, M. and Khan, T.A., 2012.)</a>
+These adsorbents have been found to remove various organic pollutants ranging from 80 to 99.9%.<a href="#Ali">( Ali, I., Asim, M. and Khan, T.A., 2012.)</a>
 </pre>
 </p>
 </html>
@@ -171,15 +173,19 @@ Heterogeneous photocatalytic oxidation has been under great investigation becaus
       Photocatalytic water treatment has undergone significant evolution in recent years, answering the demands for more sustainable and effective solutions to current water pollution. Chlorination has been one of the most popular water treatment methods for disinfection, but recently, the combination with photocatalytic technology has gained much attention due to its potential to enhance the efficiency of water purification. 
      While chlorination alone is quite effective against pathogens, it forms harmful  disinfection by-products such as trihalomethanes and haloacetic acids  Photocatalysis combined with chlorination addresses these issues by enhancing disinfection, degrading organic precursors of DBPs, and simultaneously treating a diverse array of contaminants.
  Chlorination has been the most commonly and widely used disinfection process. The disinfection by-products generated from chlorination are mutagenic and carcinogenic to human health (Yang and Cheng, 2007, Lu et al., 2009, Coleman et al., 2005). These have lead to the rapid R&D in the field of “Advanced Oxidation Processes ” as the innovative water treatment technologies
-         
+
+       </div>
+      
   <h3 id="References">References</h3>
   <p class = "ex1">
        <pre>
-         Low cost adsorbents for the removal of organic pollutants from wastewater
-.( Ali, I., Asim, M. and Khan, T.A., 2012.) Low cost adsorbents for the removal of organic pollutants from wastewater. Journal of environmental management, 113, pp.170-183.)
+         <div id="Ali">
+         <a href="https://www.sciencedirect.com/science/article/pii/S0301479712004367">Low cost adsorbents for the removal of organic pollutants from wastewater
+.( Ali, I., Asim, M. and Khan, T.A., 2012.) Low cost adsorbents for the removal of organic pollutants from wastewater. Journal of environmental management, 113, pp.170-183.)</a>
+         </div>
 
-
-Decontamination and disinfection of water by solar photocatalysis: recent overview and trends
+         
+  <a href="https://www.sciencedirect.com/science/article/pii/S0920586109003344">Decontamination and disinfection of water by solar photocatalysis: recent overview and trends
 (Malato, S., Fernández-Ibáñez, P., Maldonado, M.I., Blanco, J. and Gernjak, W., 2009). Decontamination and disinfection of water by solar photocatalysis: recent overview and trends. Catalysis today, 147(1), pp.1-59.)
 
 Heterogeneous photocatalytic oxidation an effective tool for wastewater treatment–a review
@@ -244,36 +250,42 @@ Chong, M.N., Jin, B., Chow, C.W. and Saint, C., 2010. Recent developments in pho
     window.onload = getLastUpdatedTime;
 </script>
 
+<div id="wordCountDisplay"></div>
 
- <!-- //////////////////////////////////////////////////////////////////////////////// -->
-  <!-- ////////////////////////////// Word count function ////////////////////////////// -->
-  <!-- //////////////////////////////////////////////////////////////////////////////// -->
-<!-- Placeholder for total word count -->
-<p id="totalWordCount"></p>
-<hr>
-<script>
-  // Function to calculate and display word count for a specified section
-  function displayWordCount(sectionId, outputId) {
-    // Get the text content from the specified section
-    const text = document.getElementById(sectionId).textContent;
-    // Split text into words based on spaces and filter out any empty strings
-    const wordArray = text.trim().split(/\s+/);
-    // Count the words
-    const wordCount = wordArray.length;
-    // Return the word count for summing purposes
-    return wordCount;
-  }
-  // Function to calculate and display total word count from selected sections
-  function displayTotalWordCount() {
-    // Calculate word count for each section and accumulate the total
-    const IntroductionCount = displayWordCount("Introduction_InText");
-    const AnalysisCount = displayWordCount("Analysis_InText");
-    // Calculate the sum of all selected sections
-    const totalWordCount = IntroductionCount + AnalysisCount;
-    // Display the total word count
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
-  }
-  // Run the function for specific sections and display total count when the page loads
-  window.onload = displayTotalWordCount;
-</script>
+    <script>
+        // Function to calculate word count for a specific section
+        function calculateSectionWordCount(selector) {
+            const section = document.querySelector(selector);
+
+            if (!section) {
+                console.error(`No element found with selector: ${selector}`);
+                return 0;
+            }
+
+            // Get the text content of the section
+            const text = section.innerText || section.textContent;
+
+            // Match words using a regular expression
+            const words = text.match(/\b\w+\b/g);
+
+            // Return the word count (if no words, return 0)
+            return words ? words.length : 0;
+        }
+
+        // Function to display the word count
+        function displaySectionWordCount(selector) {
+            const wordCount = calculateSectionWordCount(selector);
+            const displayElement = document.getElementById('wordCountDisplay');
+            
+            if (displayElement) {
+                displayElement.textContent = `Word Count for this page: ${wordCount}`;
+            }
+        }
+
+        // Run the word count calculation when the page loads
+        window.onload = () => {
+            displaySectionWordCount('#research');
+        };
+        </script>
+
    
